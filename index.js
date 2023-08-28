@@ -8,7 +8,7 @@ const options = {
   method: 'GET',
   url: 'https://exercisedb.p.rapidapi.com/exercises',
   headers: {
-    'X-RapidAPI-Key': ,
+    'X-RapidAPI-Key':"YOUR API-KEY",
     'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
   }
 };
