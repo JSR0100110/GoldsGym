@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arms</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .scroll-card {
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .scroll-card:hover {
+            transform: scale(1.05) translateY(-5px); /* Added translateY for lifting effect */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .navbar {
+            transition: top 0.3s;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="http://localhost:3000/">
+                <img src="https://freepngimg.com/download/arnold_schwarzenegger/133674-images-schwarzenegger-arnold-png-file-hd.png" alt="Bootstrap" width="70" height="65">
+            </a>
+            <a class="navbar-brand" href="/exercises">Exercises</a>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <% exercises.slice(0, 500).forEach(exercise => { %>
+                <% if (exercise.bodyPart.toLowerCase() === 'upper arms' || exercise.bodyPart.toLowerCase() === 'lower arms') { %>
+                    <div class="col">
+                        <div class="card shadow scroll-card">
+                            <img src="<%= exercise.gifUrl %>" class="card-img-top" alt="<%= exercise.name %>">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= exercise.name %></h5>
+                                <p class="card-text">Target Body Part: <%= exercise.bodyPart %></p>
+                                <p class="card-text">Equipment: <%= exercise.equipment %></p>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            <% }); %>
+        </div>
+        <a href="http://localhost:3000/exercises">
+        <div class="text-center mt-4">
+            <button id="loadMoreButton" type="button" class="btn btn-outline-dark">Load More Exercises</button>
+        </div>
+    </a>
+    </div>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Your script for handling load more button click goes here
+    </script>
+</body>
+</html>
